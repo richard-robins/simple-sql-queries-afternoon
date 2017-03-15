@@ -1,0 +1,227 @@
+Creating the table
+
+create table Person
+(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  Name VARCHAR(40),
+  Age INTEGER,
+  Height INTEGER,
+  City VARCHAR(40),
+  FavoriteColor VARCHAR(40)
+ );
+
+
+Inserting values in table
+
+insert into Person
+(Name, Age, Height, City, FavoriteColor)
+values
+('Gob Bluth', 36, 72,'Beverly Hills', 'green');
+
+
+insert into Person
+(Name, Age, Height, City, FavoriteColor)
+values
+('Michael Bluth', 38, 68, 'San Diego', 'Yellow');
+
+
+insert into Person
+(Name, Age, Height, City, FavoriteColor)
+values
+('Tobias Funke', 42, 66, 'Las Vegas', 'Blue');
+
+
+insert into Person
+(Name, Age, Height, City, FavoriteColor)
+values
+('Lindsey Funke', 35, 67, 'Hollywood', 'Pink');
+
+
+insert into Person
+(Name, Age, Height, City, FavoriteColor)
+values
+('Barry Zuckerkorn', 55, 69, 'Los Angeles', 'Red');
+
+
+ANSWERS
+
+1.
+select Name, Height
+From Person
+order by height asc;
+
+
+2.
+select Name, age
+From Person
+order by age desc;
+
+3.
+select Name, age
+from Person
+where age > 20;
+
+4.
+select Name, age
+from Person
+where age = 18;
+
+5.
+select Name, age
+from Person
+where age > 20
+and age > 30;
+
+6.
+select Name, age
+from Person
+where age != 27;
+
+7.
+select Name, FavoriteColor
+from Person
+where FavoriteColor != 'Red';
+
+8.
+select Name, FavoriteColor
+from Person
+where FavoriteColor not in ('Red', 'Blue');
+
+9.
+select Name, FavoriteColor
+from Person
+where FavoriteColor in ('orange', 'green');
+
+10.
+
+
+ORDERS
+
+create table Orders
+(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  personId INTEGER,
+  productName VARCHAR(40),
+  productPrice INTEGER,
+  Quantity INTEGER
+ );
+
+ 4.
+ insert into Orders
+(personID, productName, productPrice, Quantity)
+values
+(1, 'hammer', 12, 3);
+
+
+insert into Orders
+(personID, productName, productPrice, Quantity)
+values
+(1, 'Circular Saw', 120, 2);
+
+insert into Orders
+(personID, productName, productPrice, Quantity)
+values
+(2, 'wire cutters', 9, 6);
+
+insert into Orders
+(personID, productName, productPrice, Quantity)
+values
+(2, 'work gloves', 3, 20);
+
+insert into Orders
+(personID, productName, productPrice, Quantity)
+values
+(3, 'tin snips', 16, 1);
+
+
+
+6.
+select sum(Quantity)
+from orders;
+
+select sum(productPrice)
+from orders
+
+select personID, sum(productPrice)
+from orders
+group by personID;
+
+
+7.
+insert into Artist
+(Name)
+values
+('Rick James');
+
+
+insert into Artist
+(Name)
+values
+('Aquabats');
+
+
+insert into Artist
+(Name)
+values
+('Foo Fighters');
+
+
+select ArtistId, Name
+from Artist
+where ArtistID in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+order by name desc
+
+select ArtistId, Name
+from Artist
+where ArtistID in (1, 2, 3, 4, 5)
+order by name
+
+
+select ArtistId, Name
+from Artist
+where Name like 'Black%';
+
+
+select ArtistId, Name
+from Artist
+where Name like '%Black%';
+
+
+select FirstName, LastName, MAX(BirthDate)
+from Employee
+
+select FirstName, LastName, min(BirthDate)
+from Employee
+
+
+Select *
+From Employee
+where ReportsTo = 2;
+
+Select *
+From Employee
+where City = 'Lethbridge';
+
+select count(InvoiceID)
+from Invoice
+where BillingCountry = 'USA';
+
+
+select CustomerID, Total
+from Invoice
+where Total > 5
+order by Total;
+
+
+select count(*)
+from Invoice
+where Total > 5;
+
+
+select BillingState, count(*)
+from Invoice
+where BillingState in ('CA', 'TX', 'AZ')
+group by BillingState;
+
+select sum(Total)
+from Invoice;
